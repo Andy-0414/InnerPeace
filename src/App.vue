@@ -1,31 +1,60 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div id="app">
+        <header id="header">
+            <h1 class="header__title">INNER PEACE</h1>
+            <nav id="header__nav">
+                <li class="header__nav__item">ITEM1</li>
+                <li class="header__nav__item">ITEM2</li>
+                <li class="header__nav__item">ITEM3</li>
+            </nav>
+        </header>
+        <router-view />
     </div>
-    <router-view/>
-  </div>
 </template>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-}
+@font-face { font-family: "NM"; src: url("./assets/NanumMyeongjo.ttf");}
+* {
+    margin: 0;
+    padding: 0;
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+    box-sizing: border-box;
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+    font-family: 'Nanum Gothic', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* color: #8f665b; */
+    color: white;
+
+    list-style: none;
+}
+#app{
+    overflow-x: hidden;
+    height: 5000px;
+}
+#header {
+    z-index: 100;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 60px;
+}
+#header__nav {
+    display: flex;
+}
+.header__title{
+    font-family: "NM"
+}
+.header__nav__item{
+    margin-left: 10px;
 }
 </style>
