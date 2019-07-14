@@ -1,26 +1,2 @@
-# innerpeace
-
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
+# Inner-Peace
+2019 Smarteen App+ Challenge 미래 산업 IoT부문 출품작
