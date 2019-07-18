@@ -118,7 +118,6 @@ export default Vue.extend({
     left: 0;
     right: 0;
 
-    text-shadow: -3px 0 #8f665b, 0 3px #8f665b, 3px 0 #8f665b, 0 -3px #8f665b;
     transition: 0.5s;
 }
 .applogo__text {

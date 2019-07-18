@@ -52,7 +52,6 @@
     display: flex;
 }
 .header__title{
-    font-family: "NM"
 }
 .header__nav__item{
     margin-left: 10px;
