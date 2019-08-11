@@ -1,62 +1,60 @@
 <template>
-    <article class="information">
-        <div class="information__background"></div>
-        <app-logo class="information_applogo" />
-    </article>
+	<article class="information">
+		<div ref="background" class="information__background"></div>
+	</article>
 </template>
 <script lang="ts">
 import Vue from "vue";
-import AppLogo from "./AppLogo.vue";
-
 export default Vue.extend({
-    mounted(){
-        let background:any = document.querySelector(".information__background")
-        addEventListener('scroll',e=>{
-            background.style.backgroundPositionY = `-${scrollY/2}px`
-        })
-    },
-    components: {
-        AppLogo
-    }
+	mounted() {
+		let background: any = this.$refs.background;
+		for (let i = 0; i < innerWidth/80; i++) {
+			let div: HTMLDivElement = document.createElement("div");
+			background.appendChild(div);
+		}
+		addEventListener("mousemove", e => {
+			[...background.children].forEach(x => {
+                let value = 200-Math.abs(x.offsetLeft-e.clientX);
+				x.style.height = `${(value < 0 ? 0 : value)}px`;
+			});
+        });
+        addEventListener("touchmove", e => {
+			[...background.children].forEach(x => {
+                let value = 200-Math.abs(x.offsetLeft-e.touches[0].clientX);
+				x.style.height = `${(value < 0 ? 0 : value)}px`;
+			});
+		});
+	}
 });
 </script>
-
 <style>
 .information {
-    width: 100vw;
-    height: 100vh;
-    /* background: linear-gradient(to bottom, #fcdbd1, #ffffff); */
-    /* background-image: url("../../assets/innerpeace_text.png"); */
-    background-position: center;
-    background-size: cover;
+	position: relative;
+	width: 100vw;
+	height: 100vh;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    padding: 50px;
+	background-color: #121319;
 }
 .information__background {
-    position: absolute;
-    top: 0;
-    left: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
 
-    width: 100%;
-    height: 100%;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
 
-    opacity: 0.9;
-    filter: brightness(20%);
-    background-image: url("../../assets/background.png");
-    background-size: cover;
-    background-attachment: fixed;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
 }
-.information_applogo {
-    width: 100%;
-    height: 100%;
+.information__background div {
+	position: relative;
+	width: 30px;
+	margin: 0 20px;
+
+	background-color: #6a22c6;
+	opacity: 0.5;
+	transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 </style>

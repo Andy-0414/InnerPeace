@@ -5,7 +5,7 @@
 </template>
 <script lang="ts">
 import Vue from "vue";
-import Information from "../components/information/Information.vue";
+import Information from "@/components/information/Information.vue";
 export default Vue.extend({
     components: {
         Information
