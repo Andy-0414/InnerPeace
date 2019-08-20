@@ -12,7 +12,7 @@ export default Vue.extend({
 	mounted() {
         let background: any = this.$refs.background;
         let logo :any = this.$refs.logo;
-		for (let i = 0; i < innerWidth/80; i++) {
+		for (let i = 0; i < innerWidth/100; i++) {
 			let div: HTMLDivElement = document.createElement("div");
 			background.appendChild(div);
 		}
@@ -72,11 +72,12 @@ export default Vue.extend({
     transition: 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 .information__logo img{
-    width: 20%;
+    height: 40%;
 }
 .information__background div {
 	position: relative;
 	width: 30px;
+    min-width: 20px;
 	margin: 0 20px;
 
 	background-color: #6a22c6;
