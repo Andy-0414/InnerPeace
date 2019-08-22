@@ -4,8 +4,9 @@
 		<div ref="background" class="information__background"></div>
 		<div ref="logo" class="information__logo">
 			<img src="@/assets/logo.png" alt />
-            <button class="information__logo__button">More ></button>
+			<button class="information__logo__button">More ></button>
 		</div>
+		<div ref="cursor" class="cursor"></div>
 	</article>
 </template>
 <script lang="ts">
@@ -14,6 +15,7 @@ export default Vue.extend({
 	mounted() {
 		let circlebackground: any = this.$refs.circlebackground;
 		let logo: any = this.$refs.logo;
+		let cursor: any = this.$refs.cursor;
 		for (let i = 0; i < innerWidth / 100; i++) {
 			let size = (Math.random() * innerHeight) / 2 + innerHeight / 4;
 			let positionX =
@@ -42,7 +44,8 @@ export default Vue.extend({
 				x.style.top = scrollY / 2 + "px";
 			});
 		});
-		addEventListener("mousemove", e => {
+		this.$el.addEventListener("mousemove", (e: any) => {
+			cursor.style.transform = `translate3d(${e.clientX-20}px,${e.clientY-20+scrollY}px,0)`;
 			[...circlebackground.children].forEach(x => {
 				x.style.transform = `translate3d(${x.controller.position[0] +
 					((e.clientX - innerWidth / 2) / x.controller.size) *
@@ -53,15 +56,18 @@ export default Vue.extend({
 			logo.style.transform = `translate3d(${(e.clientX - innerWidth / 2) /
 				20}px,${(e.clientY - innerHeight / 2) / 20}px,0)`;
 		});
-		addEventListener("touchmove", e => {
+		this.$el.addEventListener("touchmove", (e: any) => {
 			[...circlebackground.children].forEach(x => {
 				x.style.transform = `translate3d(${x.controller.position[0] +
-					((e.touches[0].clientX - innerWidth / 2) / x.controller.size) *
+					((e.touches[0].clientX - innerWidth / 2) /
+						x.controller.size) *
 						20}px,${x.controller.position[1] +
-					((e.touches[0].clientY - innerHeight / 2) / x.controller.size) *
+					((e.touches[0].clientY - innerHeight / 2) /
+						x.controller.size) *
 						20}px,0)`;
 			});
-			logo.style.transform = `translate3d(${(e.touches[0].clientX - innerWidth / 2) /
+			logo.style.transform = `translate3d(${(e.touches[0].clientX -
+				innerWidth / 2) /
 				20}px,${(e.touches[0].clientY - innerHeight / 2) / 20}px,0)`;
 		});
 	}
@@ -76,6 +82,33 @@ export default Vue.extend({
 	background-color: #121319;
 
 	overflow: hidden;
+
+	cursor: none;
+}
+.cursor {
+	position: absolute;
+
+	top: 0;
+	left: 0;
+
+	width: 40px;
+	height: 40px;
+
+    line-height: 0em;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	border: 3px solid #5050f0;
+	border-radius: 100%;
+
+	color: #5050f0;
+	font-size: 2em;
+	font-weight: bold;
+
+	z-index: 9;
+	transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1);
 }
 @keyframes moving {
 	0% {
@@ -114,7 +147,7 @@ export default Vue.extend({
 	height: 100%;
 
 	display: flex;
-    flex-direction: column;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 
@@ -128,22 +161,22 @@ export default Vue.extend({
 .information__logo img {
 	height: 30%;
 }
-.information__logo__button{
-    cursor: pointer;
-    outline: none;
-    
-    font-size: 1.2em;
-    font-weight: bold;
-    color: white;
+.information__logo__button {
+	cursor: pointer;
+	outline: none;
 
-    border: none;
-    padding: 10px 100px;
-    margin-top: 50px;
-    border-radius: 12px;
-    background: linear-gradient(45deg,#7b2ed4, #5050f0);
-    transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	font-size: 1.2em;
+	font-weight: bold;
+	color: white;
+
+	border: none;
+	padding: 10px 100px;
+	margin-top: 50px;
+	border-radius: 12px;
+	background: linear-gradient(45deg, #7b2ed4, #5050f0);
+	transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-.information__logo__button:hover{
-    transform: scale(1.1);
+.information__logo__button:hover {
+	transform: scale(1.1);
 }
 </style>
