@@ -1,33 +1,68 @@
 <template>
 	<article class="information">
+		<div ref="circlebackground" class="information__background__circle"></div>
 		<div ref="background" class="information__background"></div>
-        <div ref="logo" class="information__logo">
-            <img src="@/assets/logo.png" alt="">
-        </div>
+		<div ref="logo" class="information__logo">
+			<img src="@/assets/logo.png" alt />
+            <button class="information__logo__button">More ></button>
+		</div>
 	</article>
 </template>
 <script lang="ts">
 import Vue from "vue";
 export default Vue.extend({
 	mounted() {
-        let background: any = this.$refs.background;
-        let logo :any = this.$refs.logo;
-		for (let i = 0; i < innerWidth/100; i++) {
-			let div: HTMLDivElement = document.createElement("div");
-			background.appendChild(div);
+		let circlebackground: any = this.$refs.circlebackground;
+		let logo: any = this.$refs.logo;
+		for (let i = 0; i < innerWidth / 100; i++) {
+			let size = (Math.random() * innerHeight) / 2 + innerHeight / 4;
+			let positionX =
+				Math.random() * (innerWidth + innerWidth / 4) - innerWidth / 4;
+			let positionY =
+				Math.random() * (innerHeight + innerHeight / 4) -
+				innerHeight / 4;
+			let div2: any = document.createElement("div");
+			div2.style.transform = `translate3d(${positionX}px,${positionY}px,0)`;
+			div2.style.width = `${size}px`;
+			div2.style.height = `${size}px`;
+			div2.controller = {
+				position: [positionX, positionY],
+				size: size
+			};
+			div2.style.transition =
+				size / (innerHeight / 4) +
+				"s cubic-bezier(0.175, 0.885, 0.32, 1.0)";
+			div2.style.animation = `moving ${size /
+				(innerHeight / 16)}s infinite`;
+
+			circlebackground.appendChild(div2);
 		}
+		addEventListener("scroll", e => {
+			[...circlebackground.children].forEach(x => {
+				x.style.top = scrollY / 2 + "px";
+			});
+		});
 		addEventListener("mousemove", e => {
-			[...background.children].forEach(x => {
-                let value = 200-Math.abs(x.offsetLeft-e.clientX);
-				x.style.height = `${(value < 0 ? 0 : value)}px`;
+			[...circlebackground.children].forEach(x => {
+				x.style.transform = `translate3d(${x.controller.position[0] +
+					((e.clientX - innerWidth / 2) / x.controller.size) *
+						20}px,${x.controller.position[1] +
+					((e.clientY - innerHeight / 2) / x.controller.size) *
+						20}px,0)`;
 			});
-            logo.style.transform = `translate3d(${(e.clientX-innerWidth/2)/20}px,${(e.clientY-innerHeight/2)/20}px,0)`;
-        });
-        addEventListener("touchmove", e => {
-			[...background.children].forEach(x => {
-                let value = 200-Math.abs(x.offsetLeft-e.touches[0].clientX);
-				x.style.height = `${(value < 0 ? 0 : value)}px`;
+			logo.style.transform = `translate3d(${(e.clientX - innerWidth / 2) /
+				20}px,${(e.clientY - innerHeight / 2) / 20}px,0)`;
+		});
+		addEventListener("touchmove", e => {
+			[...circlebackground.children].forEach(x => {
+				x.style.transform = `translate3d(${x.controller.position[0] +
+					((e.touches[0].clientX - innerWidth / 2) / x.controller.size) *
+						20}px,${x.controller.position[1] +
+					((e.touches[0].clientY - innerHeight / 2) / x.controller.size) *
+						20}px,0)`;
 			});
+			logo.style.transform = `translate3d(${(e.touches[0].clientX - innerWidth / 2) /
+				20}px,${(e.touches[0].clientY - innerHeight / 2) / 20}px,0)`;
 		});
 	}
 });
@@ -40,9 +75,20 @@ export default Vue.extend({
 
 	background-color: #121319;
 
-    overflow: hidden;
+	overflow: hidden;
 }
-.information__background {
+@keyframes moving {
+	0% {
+		left: 0;
+	}
+	50% {
+		left: 1%;
+	}
+	100% {
+		left: 0;
+	}
+}
+.information__background__circle {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -50,38 +96,54 @@ export default Vue.extend({
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
+}
+.information__background__circle div {
+	position: absolute;
+
+	background: linear-gradient(45deg, #7b2ed4, #5050f0);
+	filter: blur(5px);
+	opacity: 0.2;
+	border-radius: 100%;
+}
+.information__logo {
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	width: 100%;
+	height: 100%;
 
 	display: flex;
+    flex-direction: column;
 	justify-content: center;
-	align-items: flex-end;
+	align-items: center;
+
+	color: white;
+	opacity: 0.8;
+
+	transition: 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+	z-index: 10;
 }
-.information__logo{
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 100%;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.information__logo img {
+	height: 30%;
+}
+.information__logo__button{
+    cursor: pointer;
+    outline: none;
     
+    font-size: 1.2em;
+    font-weight: bold;
     color: white;
-    
-    transition: 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-.information__logo img{
-    height: 40%;
-}
-.information__background div {
-	position: relative;
-	width: 30px;
-    min-width: 20px;
-	margin: 0 20px;
 
-	background-color: #6a22c6;
-	opacity: 0.5;
-	transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: none;
+    padding: 10px 100px;
+    margin-top: 50px;
+    border-radius: 12px;
+    background: linear-gradient(45deg,#7b2ed4, #5050f0);
+    transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.information__logo__button:hover{
+    transform: scale(1.1);
 }
 </style>
