@@ -141,7 +141,7 @@ export default Vue.extend({
 	position: absolute;
 
 	background: linear-gradient(45deg, #7b2ed4, #5050f0);
-	filter: blur(40px);
+	filter: blur(30px);
 	opacity: 0.2;
 	border-radius: 100%;
 }
