@@ -4,7 +4,7 @@
 		<div ref="background" class="information__background"></div>
 		<div ref="logo" class="information__logo">
 			<img src="@/assets/logo.png" alt />
-			<button class="information__logo__button">More ></button>
+			<a href="#content" class="information__logo__button">More ></a>
 		</div>
 		<div ref="cursor" class="cursor"></div>
 	</article>
@@ -16,7 +16,7 @@ export default Vue.extend({
 		let circlebackground: any = this.$refs.circlebackground;
 		let logo: any = this.$refs.logo;
 		let cursor: any = this.$refs.cursor;
-		for (let i = 0; i < innerWidth / 100; i++) {
+		for (let i = 0; i < innerWidth / 200; i++) {
 			let size = (Math.random() * innerHeight) / 2 + innerHeight / 4;
 			let positionX =
 				Math.random() * (innerWidth + innerWidth / 4) - innerWidth / 4;
@@ -40,12 +40,15 @@ export default Vue.extend({
 			circlebackground.appendChild(div2);
 		}
 		addEventListener("scroll", e => {
-			[...circlebackground.children].forEach(x => {
-				x.style.top = scrollY / 2 + "px";
-			});
+			if (scrollY < innerHeight) {
+				[...circlebackground.children].forEach(x => {
+					x.style.top = scrollY / 2 + "px";
+				});
+			}
 		});
 		this.$el.addEventListener("mousemove", (e: any) => {
-			cursor.style.transform = `translate3d(${e.clientX-20}px,${e.clientY-20+scrollY}px,0)`;
+			cursor.style.transform = `translate3d(${e.clientX -
+				10}px,${e.clientY - 10 + scrollY}px,0)`;
 			[...circlebackground.children].forEach(x => {
 				x.style.transform = `translate3d(${x.controller.position[0] +
 					((e.clientX - innerWidth / 2) / x.controller.size) *
@@ -54,7 +57,7 @@ export default Vue.extend({
 						20}px,0)`;
 			});
 			logo.style.transform = `translate3d(${(e.clientX - innerWidth / 2) /
-				20}px,${(e.clientY - innerHeight / 2) / 20}px,0)`;
+				40}px,${(e.clientY - innerHeight / 2) / 40}px,0)`;
 		});
 		this.$el.addEventListener("touchmove", (e: any) => {
 			[...circlebackground.children].forEach(x => {
@@ -79,7 +82,7 @@ export default Vue.extend({
 	width: 100vw;
 	height: 100vh;
 
-	background-color: #121319;
+	background: #0c0c25;
 
 	overflow: hidden;
 
@@ -91,10 +94,10 @@ export default Vue.extend({
 	top: 0;
 	left: 0;
 
-	width: 40px;
-	height: 40px;
+	width: 20px;
+	height: 20px;
 
-    line-height: 0em;
+	line-height: 0em;
 
 	display: flex;
 	justify-content: center;
@@ -131,10 +134,12 @@ export default Vue.extend({
 	overflow: hidden;
 }
 .information__background__circle div {
+    background-image: url('../../assets/logo.png'); 
+    background-size: cover;
 	position: absolute;
 
-	background: linear-gradient(45deg, #7b2ed4, #5050f0);
-	filter: blur(5px);
+	/* background: linear-gradient(45deg, #7b2ed4, #5050f0); */
+	filter: blur(2px);
 	opacity: 0.2;
 	border-radius: 100%;
 }

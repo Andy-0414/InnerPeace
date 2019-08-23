@@ -29,6 +29,8 @@ export default Vue.extend({
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
+    scroll-behavior: smooth;
 }
 #app{
     width: 100vw;

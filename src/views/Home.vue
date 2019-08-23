@@ -19,6 +19,7 @@ export default Vue.extend({
 .content{
     display: flex;
     flex-direction: column;
+    align-items: center;
     flex-wrap: nowrap;
     overflow-x: hidden;
 }
