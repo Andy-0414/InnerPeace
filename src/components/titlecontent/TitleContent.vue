@@ -40,6 +40,7 @@ export default {};
 }
 .titlecontent_content h2 {
 	font-size: 4em;
+    text-align: center;
 	font-weight: lighter;
 }
 .titlecontent_content p {

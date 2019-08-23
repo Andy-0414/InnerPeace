@@ -23,6 +23,7 @@ export default {};
 }
 .startcontent h2{
     font-size: 4em;
+    text-align: center;
     font-weight: lighter;
 }
 .startcontent p{

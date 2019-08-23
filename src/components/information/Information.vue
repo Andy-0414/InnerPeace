@@ -16,7 +16,7 @@ export default Vue.extend({
 		let circlebackground: any = this.$refs.circlebackground;
 		let logo: any = this.$refs.logo;
 		let cursor: any = this.$refs.cursor;
-		for (let i = 0; i < innerWidth / 200; i++) {
+		for (let i = 0; i < innerWidth / 150; i++) {
 			let size = (Math.random() * innerHeight) / 2 + innerHeight / 4;
 			let positionX =
 				Math.random() * (innerWidth + innerWidth / 4) - innerWidth / 4;
@@ -136,12 +136,12 @@ export default Vue.extend({
 	overflow: hidden;
 }
 .information__background__circle div {
-    background-image: url('../../assets/logo.png'); 
+    /* background-image: url('../../assets/logo.png');  */
     background-size: cover;
 	position: absolute;
 
-	/* background: linear-gradient(45deg, #7b2ed4, #5050f0); */
-	filter: blur(2px);
+	background: linear-gradient(45deg, #7b2ed4, #5050f0);
+	filter: blur(40px);
 	opacity: 0.2;
 	border-radius: 100%;
 }
@@ -166,7 +166,11 @@ export default Vue.extend({
 	z-index: 10;
 }
 .information__logo img {
+    transition: 1s;
 	height: 30%;
+}
+.information__logo img:hover{
+    transform: rotate(-5deg);
 }
 .information__logo__button {
 	cursor: pointer;

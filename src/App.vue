@@ -38,7 +38,7 @@ hr{
     width: 30%;
     height: 5px;
     border: none;
-    background: linear-gradient(45deg, #7b2ed4, #5050f0);;
+    background: linear-gradient(45deg, #7b2ed4, #5050f0);
     margin-top: 20px;
     margin-bottom: 40px;
 }
