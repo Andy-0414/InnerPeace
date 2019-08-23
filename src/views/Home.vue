@@ -1,6 +1,7 @@
 <template>
     <section class="content">
         <Information></Information>
+        <StartContent></StartContent>
         <TitleContent></TitleContent>
     </section>
 </template>
@@ -8,10 +9,12 @@
 import Vue from "vue";
 import Information from "@/components/information/Information.vue";
 import TitleContent from "@/components/titlecontent/TitleContent.vue";
+import StartContent from "@/components/startcontent/StartContent.vue";
 export default Vue.extend({
     components: {
         Information,
-        TitleContent
+        TitleContent,
+        StartContent
     }
 });
 </script>
@@ -22,5 +25,6 @@ export default Vue.extend({
     align-items: center;
     flex-wrap: nowrap;
     overflow-x: hidden;
+    background-color: #121319;
 }
 </style>

@@ -82,11 +82,13 @@ export default Vue.extend({
 	width: 100vw;
 	height: 100vh;
 
-	background: #0c0c25;
+	background: #121319;
 
 	overflow: hidden;
 
 	cursor: none;
+    box-sizing: content-box;
+    border-bottom: 1px solid rgba(123, 46, 212,0.2);
 }
 .cursor {
 	position: absolute;
@@ -170,15 +172,16 @@ export default Vue.extend({
 	cursor: pointer;
 	outline: none;
 
-	font-size: 1.2em;
+	font-size: 1.5em;
 	font-weight: bold;
 	color: white;
 
 	border: none;
-	padding: 10px 100px;
+	padding: 10px;
 	margin-top: 50px;
 	border-radius: 12px;
-	background: linear-gradient(45deg, #7b2ed4, #5050f0);
+	/* background: linear-gradient(45deg, #7b2ed4, #5050f0); */
+    text-decoration: none;
 	transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 .information__logo__button:hover {

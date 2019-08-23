@@ -34,6 +34,14 @@ export default Vue.extend({
     letter-spacing: 0.1em;
     line-height: 1.5em;
 }
+hr{
+    width: 30%;
+    height: 5px;
+    border: none;
+    background: linear-gradient(45deg, #7b2ed4, #5050f0);;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
 #app{
     width: 100vw;
     height: auto;
