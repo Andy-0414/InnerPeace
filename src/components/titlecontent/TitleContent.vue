@@ -24,6 +24,7 @@ export default {};
     width: 20%;
 }
 .titlecontent_content{
+    color: #7b2ed4;
     width: 80%;
     text-align: right;
 }

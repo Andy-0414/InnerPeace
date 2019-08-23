@@ -31,6 +31,8 @@ export default Vue.extend({
     box-sizing: border-box;
     font-family: 'Noto Sans KR', sans-serif;
     scroll-behavior: smooth;
+    letter-spacing: 0.1em;
+    line-height: 1.5em;
 }
 #app{
     width: 100vw;
