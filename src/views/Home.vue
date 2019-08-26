@@ -49,4 +49,10 @@ export default Vue.extend({
 	opacity: 0.5;
     animation: bounce 2s infinite;
 }
+@media (min-width: 320px) and (max-width: 480px) {
+    .content__hr{
+        height: auto;
+        width: 40vw;
+    }
+}
 </style>

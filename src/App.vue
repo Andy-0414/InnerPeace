@@ -78,4 +78,9 @@ h2:hover {
 ::-webkit-scrollbar {
 	display: none;
 }
+@media (min-width: 320px) and (max-width: 480px) {
+    hr{
+        width: 80%;
+    }
+}
 </style>

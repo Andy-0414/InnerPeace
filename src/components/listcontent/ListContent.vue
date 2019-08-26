@@ -53,4 +53,11 @@ export default {};
     background: linear-gradient(45deg, #7b2ed4, #5050f0);
     border-radius: 5px;
 }
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .listcontent__list__item{
+        width:100%;
+        background-color: red !important;
+    }
+}
 </style>
