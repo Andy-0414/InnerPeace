@@ -44,7 +44,7 @@ export default Vue.extend({
 	background-color: #121319;
 }
 .content__hr {
-	height: 10vh;
+	height: 8vh;
 	margin: 5%;
 	opacity: 0.5;
     animation: bounce 2s infinite;

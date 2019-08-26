@@ -1,12 +1,25 @@
 <template>
 	<article class="titlecontent">
-		<div class="titlecontent_content">
+		<div class="titlecontent__content">
 			<h2>TITLE</h2>
 			<hr />
-			<p>
-				<img class="titlecontent_img" src="../../assets/screen1.png" />
-				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi repudiandae doloremque eligendi blanditiis consequuntur dolor aliquam quos magnam a quasi ipsa et sint at, quo repellendus magni incidunt obcaecati ad.
-			</p>
+			<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi repudiandae doloremque eligendi blanditiis consequuntur dolor aliquam quos magnam a quasi ipsa et sint at, quo repellendus magni incidunt obcaecati ad.</p>
+			<div class="titlecontent__sub">
+				<img class="titlecontent__img" src="../../assets/screen1.png" />
+				<div>
+					<h3>Sub Title</h3>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil inventore necessitatibus maxime natus repellat tempora perspiciatis quis placeat illo, officiis mollitia animi reiciendis. Quasi consequatur corporis quia aspernatur enim. Assumenda.</p>
+                    <p>
+                        <img class="titlecontent__subimg" src="../../assets/logo.png" alt="">
+                        <img class="titlecontent__subimg" src="../../assets/logo.png" alt="">
+                        <img class="titlecontent__subimg" src="../../assets/logo.png" alt="">
+                        <img class="titlecontent__subimg" src="../../assets/logo.png" alt="">
+                    </p>
+                    <p>
+                        <button>BUTTON</button>
+                    </p>
+                </div>
+			</div>
 		</div>
 	</article>
 </template>
@@ -23,29 +36,78 @@ export default {};
 	width: 100%;
 	max-width: 1280px;
 }
-.titlecontent_img {
-	float: left;
-	width: 20%;
-    margin-right: 30px;
-    margin-bottom: 30px;
-
-	border-radius: 5px;
-}
-.titlecontent_content {
+.titlecontent__content {
 	color: white;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	width: 100%;
 }
-.titlecontent_content h2 {
+.titlecontent__content > h2 {
 	font-size: 4em;
-    text-align: center;
+	text-align: center;
 	font-weight: lighter;
 }
-.titlecontent_content p {
-    display: flex;
-    align-items: center;
+.titlecontent__content > p {
+	display: flex;
+	align-items: center;
 	font-size: 1.2em;
+	width: 80%;
+
+    text-align: center;
+}
+.titlecontent__sub {
+	margin-top: 100px;
+	width: 100%;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.titlecontent__img {
+	width: 30%;
+	margin-right: 30px;
+	margin-bottom: 30px;
+
+	border-radius: 20px;
+
+    box-shadow: 0px 0px 20px rgba(123, 46, 212,0.2);
+}
+.titlecontent__sub div {
+	width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.titlecontent__sub h3 {
+	font-size: 3em;
+	font-weight: lighter;
+	text-align: right;
+	width: 80%;
+}
+.titlecontent__sub p {
+    margin-top: 10px;
+	text-align: right;
+	width: 80%;
+    font-size: 1.2em;
+}
+.titlecontent__sub button{
+    cursor: pointer;
+	background: linear-gradient(45deg, #7b2ed4, #5050f0);
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 1em;
+    margin-top: 50px;
+    padding: 10px 100px;
+    transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.titlecontent__sub button:hover{
+    transform: scale(1.1);
+}
+.titlecontent__subimg{
+    margin-top: 40px;
+    width: 25%;
 }
 </style>
